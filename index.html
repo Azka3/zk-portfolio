@@ -1,0 +1,209 @@
+<!doctype html>
+<!-- index.html — struktur halaman. Style: css/style.css · Logika & data: js/script.js -->
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Azka Zakiyyan Khisbhan Ali — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="#top" class="logo"><b>力</b>Azka</a>
+      <div class="nav-r">
+        <ul>
+          <li><a href="#about" data-i18n="nav_about">Tentang</a></li>
+          <li><a href="#skill" data-i18n="nav_skill">Skill</a></li>
+          <li><a href="#project" data-i18n="nav_project">Project</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Kontak</a></li>
+        </ul>
+        <!-- Tombol ganti bahasa ID | EN -->
+        <button
+          class="lang"
+          id="lang"
+          type="button"
+          data-lang="id"
+          data-i18n-aria="langaria"
+          aria-label="Ganti bahasa"
+        >
+          <i></i><span data-l="id">ID</span><span data-l="en">EN</span>
+        </button>
+      </div>
+    </nav>
+
+    <section class="hero" id="top">
+      <div class="kanji-bg" style="right: -4%; top: 8%">創</div>
+      <div class="rv">
+        <div class="eyebrow mono"><i></i>Portfolio // 2026</div>
+        <h1>Azka Zakiyyan<br /><em>Khisbhan</em> Ali</h1>
+        <p class="lead" data-i18n="lead">
+          Game developer &amp; 3D artist. Saya membangun dunia interaktif dari model, kode, dan antarmuka,
+          untuk game, web, dan aplikasi Android.
+        </p>
+        <div class="dossier mono" style="text-transform: none; letter-spacing: 0.04em">
+          <div><span data-i18n="role">Peran</span><span>Game Dev · 3D · UI/UX</span></div>
+          <div><span>Engine</span><span>Unity ⇄ Godot ⇄ Roblox Studio</span></div>
+          <div>
+            <span>Status</span><span data-i18n="open" style="color: var(--red)">● Terbuka untuk project</span>
+          </div>
+        </div>
+        <div class="btns">
+          <a class="btn fill" href="#project" data-i18n="btn_view">Lihat project</a
+          ><a class="btn" href="#contact" data-i18n="btn_hire">Hubungi saya</a>
+        </div>
+      </div>
+      <div class="statue rv">
+        <div class="frame">
+          <img
+            id="st"
+            alt="Patung marmer bergaya dithered"
+            data-i18n-alt="alt_statue"
+            src="images/patung.png"
+          /><span class="corner mono">像 / 01</span><span class="corner r mono">dithered marble</span>
+        </div>
+        <div class="tag mono">dithered to bone</div>
+      </div>
+    </section>
+
+    <div class="marq"><div id="mq"></div></div>
+
+    <section id="about">
+      <div class="kanji-bg" style="left: -3%; top: 2%">人</div>
+      <div class="eyebrow mono rv"><i></i><span data-i18n="about_e">01 // Perkenalan</span></div>
+      <h2 class="rv" data-i18n-html="about_h">Halo, saya <em>Azka</em>.</h2>
+      <div class="about">
+        <div class="rv">
+          <p data-i18n-html="about_p1">
+            Nama saya <strong>Azka Zakiyyan Khisbhan Ali</strong>. Saya senang membuat hal yang bisa dilihat,
+            dimainkan, dan disentuh: dari model 3D di Blender, game di Unity, Godot, dan Roblox Studio, sampai
+            website dan aplikasi Android.
+          </p>
+          <p data-i18n-html="about_p2">
+            Bagi saya desain dan kode tidak terpisah. Antarmuka yang rapi di Figma harus terasa mulus saat
+            dijalankan, dan dunia 3D harus punya cerita di balik setiap detailnya.
+          </p>
+        </div>
+        <div class="stats rv">
+          <div><b class="roll" data-v="7"></b><span class="mono" data-i18n="st1">Skill utama</span></div>
+          <div><b class="roll" data-v="3"></b><span class="mono" data-i18n="st2">Game engine</span></div>
+          <div><b class="roll" data-v="∞"></b><span class="mono" data-i18n="st3">Rasa ingin tahu</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skill">
+      <div class="kanji-bg" style="right: -3%; top: 0">技</div>
+      <div class="eyebrow mono rv"><i></i><span data-i18n="skill_e">02 // Skill</span></div>
+      <h2 class="rv" data-i18n-html="skill_h">Alat yang saya <em>kuasai</em>.</h2>
+      <div class="skills rv" id="sk"></div>
+    </section>
+
+    <section id="project">
+      <div class="kanji-bg" style="left: -3%; top: 0">作</div>
+      <div class="eyebrow mono rv"><i></i><span data-i18n="proj_e">03 // Project</span></div>
+      <h2 class="rv" data-i18n-html="proj_h">Karya <em>pilihan</em>.</h2>
+      <div class="filters rv" id="flt"></div>
+      <p class="mono" id="cnt" style="margin-top: 18px"></p>
+      <div class="projects" id="pj"></div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="kanji-bg" style="left: -3%; top: 0">縁</div>
+      <div>
+        <div class="eyebrow mono rv"><i></i><span data-i18n="contact_e">04 // Kontak</span></div>
+        <h2 class="rv" data-i18n-html="contact_h">Mari buat sesuatu <em>bersama</em>.</h2>
+        <p class="sub rv" data-i18n="contact_sub">
+          Punya ide game, website, atau aplikasi? Tulis pesan di bawah, saya akan membalasnya lewat email.
+        </p>
+        <div class="msg rv" id="msg">
+          <div class="msg-h mono">
+            <span><i></i><b data-i18n="msg_new" style="font-weight: inherit">Pesan baru</b></span
+            ><span id="to">kepada: azkazakiyan3@gmail.com</span>
+          </div>
+          <div class="fld">
+            <label class="mono" for="fn" data-i18n="lbl_name">Nama</label
+            ><input id="fn" autocomplete="name" placeholder="Nama kamu" data-i18n-ph="ph_name" />
+          </div>
+          <div class="fld">
+            <label class="mono" for="fe" data-i18n="lbl_email">Email kamu</label
+            ><input id="fe" type="email" autocomplete="email" placeholder="nama@email.com" />
+          </div>
+          <div class="fld">
+            <label class="mono" for="fm" data-i18n="lbl_msg">Pesan</label
+            ><textarea
+              id="fm"
+              rows="4"
+              placeholder="Ceritakan ide atau project kamu..."
+              data-i18n-ph="ph_msg"
+            ></textarea>
+          </div>
+          <button class="send" id="sd" type="button"><b id="sl">Kirim pesan</b><span>✈</span></button>
+        </div>
+      </div>
+      <div class="forge rv">
+        <img
+          alt="Lengan bertato menempa di atas landasan, gaya dithered"
+          data-i18n-alt="alt_forge"
+          src="images/tempa.png"
+        /><span class="corner mono">鍛 / 02</span><span class="corner r mono">forge · dithered</span>
+      </div>
+    </section>
+
+    <div class="find rv">
+      <div class="find-h mono"><span data-i18n="find_h">05 // Temukan saya</span><span>力</span></div>
+      <div class="find-g">
+        <a href="https://github.com/Azka3"
+          ><div><span class="mono" data-i18n="f1">01 // kode</span><b>GitHub</b></div>
+          <em>↗</em></a
+        >
+        <a href="https://www.instagram.com/zk_1980p?srtk=MTlzaDV3a2NubWEwNA=="
+          ><div><span class="mono" data-i18n="f2">02 // sosial</span><b>Instagram</b></div>
+          <em>↗</em></a
+        >
+        <a href="https://www.roblox.com/users/6080159836/profile"
+          ><div><span class="mono" data-i18n="f3">03 // game</span><b>Roblox</b></div>
+          <em>↗</em></a
+        >
+      </div>
+    </div>
+
+    <footer class="mono">
+      <span>© 2026 Azka Zakiyyan Khisbhan Ali</span
+      ><span data-i18n="foot">力と美のために · dibuat dengan sepenuh hati</span>
+    </footer>
+
+    <div
+      class="lb"
+      id="lb"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Galeri project"
+      data-i18n-aria="lb_aria"
+    >
+      <div class="lb-bg" id="lbb"></div>
+      <div class="lb-box" id="lbx">
+        <button class="lb-x" aria-label="Tutup" data-i18n-aria="close">✕</button>
+        <div class="lb-stage" id="lbs">
+          <div class="lb-slide" id="ls"></div>
+          <button class="lb-n prev" aria-label="Sebelumnya" data-i18n-aria="prev">‹</button
+          ><button class="lb-n next" aria-label="Berikutnya" data-i18n-aria="next">›</button
+          ><span class="lb-c mono" id="lc"></span>
+        </div>
+        <div class="lb-th" id="lt"></div>
+        <div class="lb-info">
+          <span class="mono" id="lk"></span>
+          <h3 id="lh"></h3>
+          <p id="lp"></p>
+          <div class="chips" id="lch"></div>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
