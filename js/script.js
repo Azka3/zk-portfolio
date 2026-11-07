@@ -139,7 +139,7 @@ const PROJECTS = [
     link: "https://gallery-informatika.vercel.app/", 
   },
   {
-    judul: { id: "zk downloader", en: "zk downloader" },
+    judul: { id: "Media Downloader", en: "Media Downloader" },
     deskripsi: {
       id: "Tempat download media atau foto secara offline",
       en: "Place to download media or photos offline",
