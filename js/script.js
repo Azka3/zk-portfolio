@@ -83,7 +83,7 @@ const PROJECTS = [
     foto: ["images/blender/cruch.jpg", "images/blender/cruch1.jpg"],
   },
   {
-    judul: { id: "mansion", en: "rumah besar" },
+    judul: { id: "Mansion", en: "Mansion" },
     deskripsi: {
       id: "Rumah besar di dunia fantasi anime",
       en: "A mansion house in an anime fantasy world.",
