@@ -18,10 +18,6 @@
 // Email tujuan form kontak
 const EMAIL = "azkazakiyan3@gmail.com";
 
-/* Teks yang punya dua bahasa ditulis seperti ini:
-     { id: "teks Indonesia", en: "English text" }
-   Kalau cukup satu bahasa, tulis string biasa saja. */
-
 // Skill: [nama, deskripsi, level 0-100, kanji dekorasi]
 const SKILLS = [
   [
@@ -74,17 +70,6 @@ const SKILLS = [
   ],
 ];
 
-/* Project.
-   CARA MENAMBAH FOTO:
-   1. Taruh file foto di folder  images/projects/
-   2. Tulis nama filenya di "foto", contoh:
-        foto: ["images/projects/game01-1.jpg", "images/projects/game01-2.jpg"]
-      Foto pertama otomatis jadi sampul kartu. Boleh lebih dari satu.
-   3. Kalau "foto" dibiarkan kosong [], yang tampil 3 kotak placeholder.
-
-   "kategori" harus salah satu / lebih dari:
-   Blender, Unity, Godot, Roblox, Website, Figma, Android  (dipakai tombol filter)
-*/
 const PROJECTS = [
   {
     judul: { id: "Gereja", en: "Church" },
@@ -151,6 +136,18 @@ const PROJECTS = [
     kategori: ["Website"],
     kanji: "森",
     foto: ["images/web/w1.png",],
+    link: "https://gallery-informatika.vercel.app/", // link halaman website (hapus baris ini kalau belum ada)
+  },
+  {
+    judul: { id: "zk downloader", en: "zk downloader" },
+    deskripsi: {
+      id: "Tempat download media atau foto secara offline",
+      en: "Place to download media or photos offline",
+    },
+    tags: ["Website", "figma"],
+    kategori: ["Website"],
+    kanji: "森",
+    foto: ["images/web/w2.png",],
   },
 ];
 
@@ -216,6 +213,7 @@ const I18N = {
     photoN: "Foto",
     phTxt: "FOTO PROJECT",
     view: "Lihat",
+    visit: "Kunjungi website",
     open_gal: "Buka galeri",
     langaria: "Ganti bahasa",
     pw: () => "foto",
@@ -274,6 +272,7 @@ const I18N = {
     photoN: "Photo",
     phTxt: "PROJECT PHOTO",
     view: "View",
+    visit: "Visit website",
     open_gal: "Open gallery",
     langaria: "Switch language",
     pw: (n) => (n === 1 ? "photo" : "photos"),
@@ -330,6 +329,11 @@ function applyLang(anim) {
 const pad2 = (n) => String(n).padStart(2, "0");
 // Daftar foto sebuah project; kalau kosong pakai 3 placeholder
 const imgsOf = (p) => (p.foto && p.foto.length ? p.foto : [null, null, null]);
+// Tombol link langsung ke website (hanya muncul kalau project punya field "link")
+const linkBtn = (p, cls) =>
+  p.link
+    ? `<a class="btn ${cls}" href="${p.link}" target="_blank" rel="noopener noreferrer" data-lk>${t("visit")} ↗</a>`
+    : "";
 const viewLbl = (p) => `${t("view")} · ${imgsOf(p).length} ${t("pw", imgsOf(p).length)} ↗`;
 
 document.getElementById("sk").innerHTML = SKILLS.map(
@@ -348,6 +352,7 @@ document.getElementById("pj").innerHTML = PROJECTS.map((p, i) => {
       <h3 data-pt>${T(p.judul)}</h3>
       <p data-pd>${T(p.deskripsi)}</p>
       <div class="chips">${p.tags.map((t) => `<span>${t}</span>`).join("")}</div>
+      ${linkBtn(p, "fill lk")}
     </div>
   </article>`;
 }).join("");
@@ -396,6 +401,8 @@ LANG_HOOKS.push(() => {
     c.querySelector("[data-pt]").textContent = T(p.judul);
     c.querySelector("[data-pd]").textContent = T(p.deskripsi);
     c.querySelector("[data-vw]").textContent = viewLbl(p);
+    const lk = c.querySelector("[data-lk]");
+    if (lk) lk.textContent = t("visit") + " ↗";
     const ph = c.querySelector("[data-ph]");
     if (ph) ph.textContent = t("phTxt") + " " + pad2(i + 1);
     const im = c.querySelector(".thumb img");
@@ -555,6 +562,7 @@ fl.addEventListener("click", (e) => {
     g("lh").textContent = T(p.judul);
     g("lp").textContent = T(p.deskripsi);
     g("lch").innerHTML = p.tags.map((t) => `<span>${t}</span>`).join("");
+    g("ll").innerHTML = linkBtn(p, "fill");
     lt.innerHTML = imgs
       .map(
         (im, k) =>
@@ -601,10 +609,12 @@ fl.addEventListener("click", (e) => {
     paint(d);
   }
   pj.addEventListener("click", (e) => {
+    if (e.target.closest("a")) return; // klik tombol link: jangan buka galeri
     const c = e.target.closest(".card");
     if (c) open(+c.dataset.i);
   });
   pj.addEventListener("keydown", (e) => {
+    if (e.target.closest("a")) return;
     const c = e.target.closest(".card");
     if (c && (e.key === "Enter" || e.key === " ")) {
       e.preventDefault();
@@ -645,6 +655,7 @@ fl.addEventListener("click", (e) => {
     const p = PROJECTS[cur];
     g("lh").textContent = T(p.judul);
     g("lp").textContent = T(p.deskripsi);
+    g("ll").innerHTML = linkBtn(p, "fill");
     lt.querySelectorAll(".th").forEach((x, k) => x.setAttribute("aria-label", t("photoN") + " " + (k + 1)));
     paint(0);
   });

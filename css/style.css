@@ -1108,3 +1108,11 @@ footer {
     min-width: 30px;
   }
 }
+
+/* Tombol link langsung ke website (kartu project & galeri) */
+.card .lk,
+.lb-link .btn {
+  display: inline-block;
+  margin-top: 16px;
+  text-decoration: none;
+}
