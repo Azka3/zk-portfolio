@@ -136,7 +136,7 @@ const PROJECTS = [
     kategori: ["Website"],
     kanji: "森",
     foto: ["images/web/w1.png",],
-    link: "https://gallery-informatika.vercel.app/", // link halaman website (hapus baris ini kalau belum ada)
+    link: "https://gallery-informatika.vercel.app/", 
   },
   {
     judul: { id: "zk downloader", en: "zk downloader" },
@@ -148,15 +148,10 @@ const PROJECTS = [
     kategori: ["Website"],
     kanji: "森",
     foto: ["images/web/w2.png",],
+    link: "https://github.com/Azka3/zkdownloader",
   },
 ];
 
-/* ==========================================================
-   1b. TEKS DUA BAHASA
-   Semua teks tetap di halaman (menu, judul, tombol, form) ada di sini.
-   Di index.html, elemen diberi data-i18n="nama_kunci".
-   Mau ubah kalimat? Cari kuncinya di bawah, edit di bagian id dan en.
-   ========================================================== */
 const I18N = {
   id: {
     nav_about: "Tentang",
@@ -323,7 +318,7 @@ function applyLang(anim) {
 }
 
 /* ==========================================================
-   2. RENDER SKILL & PROJECT  (di bawah ini tidak perlu diedit)
+   2. RENDER SKILL & PROJECT 
    ========================================================== */
 
 const pad2 = (n) => String(n).padStart(2, "0");
